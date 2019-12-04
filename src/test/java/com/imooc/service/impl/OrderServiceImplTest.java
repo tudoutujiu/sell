@@ -3,6 +3,7 @@ package com.imooc.service.impl;
 import com.imooc.dto.CartDTO;
 import com.imooc.dto.OrderDTO;
 import com.imooc.enums.OrderStatusEnum;
+import com.imooc.enums.PayStatusEnum;
 import com.imooc.pojo.OrderDetail;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
@@ -36,8 +37,8 @@ public class OrderServiceImplTest {
     @Test
     public void create() {
         OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setBuyerName("五台山");
-        orderDTO.setBuyerAddress("清心观");
+        orderDTO.setBuyerName("炒面包");
+        orderDTO.setBuyerAddress("德莱塞");
         orderDTO.setBuyerPhone("13765414208");
         orderDTO.setBuyerOpenid(BUYER_OPENID);
 
@@ -82,9 +83,15 @@ public class OrderServiceImplTest {
 
     @Test
     public void finish() {
+        OrderDTO orderDTO = orderService.findOne("1575470448021511623");
+        OrderDTO result = orderService.finish(orderDTO);
+        Assert.assertEquals(OrderStatusEnum.FINISHED.getCode(),result.getOrderStatus());
     }
 
     @Test
     public void paid() {
+        OrderDTO orderDTO = orderService.findOne("1575470448021511623");
+        OrderDTO result = orderService.paid(orderDTO);
+        Assert.assertEquals(PayStatusEnum.SUCCESS.getCode(),result.getPayStatus());
     }
 }
