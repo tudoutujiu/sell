@@ -25,8 +25,8 @@ public class ProductCategoryRepositoryTest {
     private ProductCategoryRepository repository;
     @Test
     public void FindOneTest(){
-       ProductCategory productCategory = repository.findOne(2);
-       productCategory.setCategoryType(15);
+       ProductCategory productCategory = repository.findOne(1);
+       productCategory.setCategoryType(2);
        repository.save(productCategory);
         //System.out.println(productCategory);
         //System.out.println(productCategory.toString());
