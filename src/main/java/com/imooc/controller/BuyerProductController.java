@@ -32,6 +32,7 @@ public class BuyerProductController {
     private ProductService productService;
     @Autowired
     private CategoryService categoryService;
+    final int s = 12;
     @GetMapping("/list")
     public ResultVO list(){
         //1.查询所有的上架商品
