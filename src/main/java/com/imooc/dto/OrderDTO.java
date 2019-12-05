@@ -1,8 +1,11 @@
 package com.imooc.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.imooc.enums.OrderStatusEnum;
 import com.imooc.enums.PayStatusEnum;
 import com.imooc.pojo.OrderDetail;
+import com.imooc.util.serializer.Date2LongSerializer;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -14,6 +17,7 @@ import java.util.List;
  * @date 2019年12月02日---下午 5:08
  */
 @Data
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderDTO {
     /** 订单编号 */
     private String orderId;
@@ -40,12 +44,14 @@ public class OrderDTO {
     private Integer payStatus;
 
     /** 创建时间 */
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date createTime;
 
     /** 修改时间 */
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date updateTime;
 
-
+    //如果要求必须返回，但又不能为空，可以给它一个初始值
     private List<OrderDetail> orderDetailList;
 
 }
