@@ -21,6 +21,7 @@
         <lombok.version>1.18.4</lombok.version>
         <mysql.version>5.1.38</mysql.version>
         <logback.version>1.2.3</logback.version>
+        <springwebmvc.version>4.3.10.RELEASE</springwebmvc.version>
     </properties>
 
     <dependencies>
@@ -86,6 +87,7 @@
             <artifactId>gson</artifactId>
         </dependency>
 
+        <!--freemarker模板引擎-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
@@ -95,6 +97,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${springwebmvc.version}</version>
+        </dependency>
+
 
     </dependencies>
 

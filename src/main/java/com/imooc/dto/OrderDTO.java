@@ -1,10 +1,12 @@
 package com.imooc.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.imooc.enums.OrderStatusEnum;
 import com.imooc.enums.PayStatusEnum;
 import com.imooc.pojo.OrderDetail;
+import com.imooc.util.EnumUtil;
 import com.imooc.util.serializer.Date2LongSerializer;
 import lombok.Data;
 
@@ -53,5 +55,15 @@ public class OrderDTO {
 
     //如果要求必须返回，但又不能为空，可以给它一个初始值
     private List<OrderDetail> orderDetailList;
+
+    @JsonIgnore //对象转成json格式，就会忽略所注解的方法
+    public OrderStatusEnum getOrderStatusEnum(){
+        return EnumUtil.getByCode(orderStatus,OrderStatusEnum.class);
+    }
+
+    @JsonIgnore
+    public PayStatusEnum getPayStatusEnum(){
+        return EnumUtil.getByCode(payStatus,PayStatusEnum.class);
+    }
 
 }

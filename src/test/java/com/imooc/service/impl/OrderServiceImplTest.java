@@ -37,22 +37,18 @@ public class OrderServiceImplTest {
     @Test
     public void create() {
         OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setBuyerName("炒面包");
-        orderDTO.setBuyerAddress("德莱塞");
+        orderDTO.setBuyerName("韩立");
+        orderDTO.setBuyerAddress("大晋");
         orderDTO.setBuyerPhone("13765414208");
         orderDTO.setBuyerOpenid(BUYER_OPENID);
 
         //购物车
         List<OrderDetail> orderDetailList = new ArrayList<>();
         OrderDetail o1 = new OrderDetail();
-        o1.setProductId("1234");
-        o1.setProductQuantity(1);
+        o1.setProductId("9");
+        o1.setProductQuantity(2);
 
-        OrderDetail o2 = new OrderDetail();
-        o2.setProductId("12345");
-        o2.setProductQuantity(2);
         orderDetailList.add(o1);
-        orderDetailList.add(o2);
 
         orderDTO.setOrderDetailList(orderDetailList);
         OrderDTO result = orderService.create(orderDTO);
