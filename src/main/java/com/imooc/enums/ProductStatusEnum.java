@@ -1,5 +1,6 @@
 package com.imooc.enums;
 
+import com.imooc.util.EnumUtil;
 import lombok.Getter;
 
 /**
@@ -8,8 +9,8 @@ import lombok.Getter;
  * @data 2019-12-01 17:38:05
  */
 @Getter
-public enum ProductStatusEnum {
-    UP(0,"上架"),
+public enum ProductStatusEnum implements CodeEnum {
+    UP(0,"在架"),
     DOWN(1,"下架")
     ;
     private Integer code;

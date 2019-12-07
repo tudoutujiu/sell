@@ -1,11 +1,16 @@
 package com.imooc.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.imooc.enums.ProductStatusEnum;
+import com.imooc.util.EnumUtil;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * @author 宋德能
@@ -14,6 +19,7 @@ import java.math.BigDecimal;
 @Entity
 @Data
 @NoArgsConstructor
+@DynamicUpdate
 public class ProductInfo {
 
     @Id
@@ -39,4 +45,13 @@ public class ProductInfo {
 
     /** 类目编号 */
     private Integer categoryType;
+
+    private Date createTime;
+
+    private Date updateTime;
+
+    @JsonIgnore
+    public ProductStatusEnum getProductStatusEnum(){
+        return EnumUtil.getByCode(productStatus,ProductStatusEnum.class);
+    }
 }
