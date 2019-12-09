@@ -2,6 +2,7 @@ package com.imooc.service.impl;
 
 import com.imooc.enums.ProductStatusEnum;
 import com.imooc.pojo.ProductInfo;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,8 +30,8 @@ public class ProductServiceImplTest {
 
     @Test
     public void findOne() throws Exception {
-        ProductInfo productInfo = productService.findOne("1234");
-        Assert.assertEquals("1234",productInfo.getProductId());
+        ProductInfo productInfo = productService.findOne("9");
+        Assert.assertEquals("9",productInfo.getProductId());
     }
 
     @Test
