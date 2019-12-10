@@ -112,7 +112,7 @@ public class SellerProductController {
             map.put("url","/sell/seller/product/index");
             return new ModelAndView("common/error",map);
         }
-        ProductInfo productInfo = new ProductInfo();
+        ProductInfo productInfo = productService.findOne(productForm.getProductId());
         BeanUtils.copyProperties(productForm,productInfo);
         try{
             productService.save(productInfo);

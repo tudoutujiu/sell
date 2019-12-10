@@ -54,7 +54,7 @@ public class ProductServiceImplTest {
         productInfo.setProductId("12345");
         productInfo.setProductName("乌龙茶");
         productInfo.setProductPrice(new BigDecimal(3.5));
-        productInfo.setProductStock(12);
+        productInfo.setProductStock(125);
         productInfo.setProductDescription("味道棒极了");
         productInfo.setProductIcon("http://*******.jpg");
         productInfo.setCategoryType(2);
