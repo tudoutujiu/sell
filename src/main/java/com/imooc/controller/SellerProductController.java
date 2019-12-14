@@ -6,6 +6,7 @@ import com.imooc.pojo.ProductCategory;
 import com.imooc.pojo.ProductInfo;
 import com.imooc.service.CategoryService;
 import com.imooc.service.ProductService;
+import com.imooc.util.KeyUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -47,7 +48,7 @@ public class SellerProductController {
      */
     @GetMapping("/list")
     public ModelAndView list(@RequestParam(value = "page",defaultValue = "1") Integer page,
-                             @RequestParam(value = "size",defaultValue = "10") Integer size,
+                             @RequestParam(value = "size",defaultValue = "5") Integer size,
                              Map<String,Object> map){
         PageRequest request = new PageRequest(page - 1,size);
         Page<ProductInfo> productInfoPage = productService.findAll(request);
@@ -112,9 +113,16 @@ public class SellerProductController {
             map.put("url","/sell/seller/product/index");
             return new ModelAndView("common/error",map);
         }
-        ProductInfo productInfo = productService.findOne(productForm.getProductId());
-        BeanUtils.copyProperties(productForm,productInfo);
+
+        ProductInfo productInfo = new ProductInfo();
         try{
+            //如果productId不为空,说明是要执行修改操作
+            if(!StringUtils.isEmpty(productForm.getProductId())){
+                productInfo = productService.findOne(productForm.getProductId());
+            }else {
+                productForm.setProductId(KeyUtil.genUniqueKey());
+            }
+            BeanUtils.copyProperties(productForm,productInfo);
             productService.save(productInfo);
         }catch (SecurityException e){
             map.put("msg",e.getMessage());

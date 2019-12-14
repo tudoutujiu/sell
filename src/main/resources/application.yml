@@ -11,12 +11,23 @@ spring:
 #url前缀
 server:
     context-path: /sell
+
 #logging:
 #  pattern:
 #    console: "%d - %msg%n"
 #  path: /var/log/tomcat/
 #  file: /var/log/tomcat/sell.log
 #  level: debug
+
+wechat:
+  mpAppId: wx59ecb8cd5f139b66
+  mapAppSecret: ac45d43887490e03ae22071478a60a9c
+  openAppId: #wx6ad144e54af67d87
+  openAppSecret: #91a2ff6d38a2bbccfb7e9f9079108e2e
+  mchId: #1483469312
+  mchKey: #06c56A89949D617xxxxxxxxxx
+  keyPath: #/var/weixin_cert/h5.p12
+  notifyUrl: #http://sell.natapp4.cc/sell/pay/notify
 
 
 
